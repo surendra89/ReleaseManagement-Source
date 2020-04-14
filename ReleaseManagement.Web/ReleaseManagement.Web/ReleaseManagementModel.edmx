@@ -1,0 +1,1207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ReportingToolAutomationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ReportingToolAutomation.dbo.ELMAH_Error' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ELMAH_Error">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+            <PropertyRef Name="Application" />
+            <PropertyRef Name="Host" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="Source" />
+            <PropertyRef Name="Message" />
+            <PropertyRef Name="User" />
+            <PropertyRef Name="StatusCode" />
+            <PropertyRef Name="TimeUtc" />
+            <PropertyRef Name="Sequence" />
+            <PropertyRef Name="AllXml" />
+          </Key>
+          <Property Name="ErrorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Application" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Host" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Source" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StatusCode" Type="int" Nullable="false" />
+          <Property Name="TimeUtc" Type="datetime" Nullable="false" />
+          <Property Name="Sequence" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AllXml" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLEntryDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnterpriseId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TottNo" Type="varchar" MaxLength="100" />
+          <Property Name="TottDescription" Type="varchar(max)" />
+          <Property Name="TaskTypeID" Type="int" />
+          <Property Name="TotalHrs" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="RegionID" Type="int" />
+          <Property Name="TaskDate" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="300" />
+          <Property Name="TottID" Type="int" />
+        </EntityType>
+        <EntityType Name="TBLEnvironmentMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnvironmentName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Createdby" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="Modifiedby" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TBLRegionMaster">
+          <Key>
+            <PropertyRef Name="RegionID" />
+          </Key>
+          <Property Name="RegionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Region" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="TBLReleaseEntry">
+          <Key>
+            <PropertyRef Name="ReleaseID" />
+          </Key>
+          <Property Name="ReleaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuildNo" Type="int" Nullable="false" />
+          <Property Name="EnvironmentID" Type="int" Nullable="false" />
+          <Property Name="ReleaseDate" Type="datetime" Nullable="false" />
+          <Property Name="ReleaseBy" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TBLReleaseEntryDetails">
+          <Key>
+            <PropertyRef Name="ReleaseID" />
+            <PropertyRef Name="TOTTID" />
+          </Key>
+          <Property Name="ReleaseID" Type="int" Nullable="false" />
+          <Property Name="TOTTID" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="100" />
+          <Property Name="AssignedTo" Type="int" />
+        </EntityType>
+        <EntityType Name="TBLReleaseMaster">
+          <Key>
+            <PropertyRef Name="BuildNo" />
+          </Key>
+          <Property Name="BuildNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReleaseNo" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="Modifiedby" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TBLRoleMaster">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="TBLTaskTypeMaster">
+          <Key>
+            <PropertyRef Name="TaskTypeID" />
+          </Key>
+          <Property Name="TaskTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskType" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="isTottTask" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="TBLTOTTMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TottNo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TottDescription" Type="varchar(max)" Nullable="false" />
+          <Property Name="TaskTypeID" Type="int" Nullable="false" />
+          <Property Name="RegionID" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="300" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="300" />
+          <Property Name="WorkedBy" Type="varchar" MaxLength="30" />
+          <Property Name="isDevDeployed" Type="bit" Nullable="false" />
+          <Property Name="isTestDeployed" Type="bit" Nullable="false" />
+          <Property Name="isPrd8Deployed" Type="bit" Nullable="false" />
+          <Property Name="isProdDeployed" Type="bit" Nullable="false" />
+          <Property Name="containsCodeChange" Type="bit" Nullable="false" />
+          <Property Name="containsDBChange" Type="bit" Nullable="false" />
+          <Property Name="containsConfigChange" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLUsersDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnterpriseId" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EnterpriseName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="EmailId" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="300" />
+          <Property Name="UserPassword" Type="varbinary(max)" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <Association Name="FK__TBLEntryD__Regio__4CA06362">
+          <End Role="TBLRegionMaster" Type="Self.TBLRegionMaster" Multiplicity="0..1" />
+          <End Role="TBLEntryDetails" Type="Self.TBLEntryDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLRegionMaster">
+              <PropertyRef Name="RegionID" />
+            </Principal>
+            <Dependent Role="TBLEntryDetails">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBLEntryD__Regio__4D94879B">
+          <End Role="TBLRegionMaster" Type="Self.TBLRegionMaster" Multiplicity="0..1" />
+          <End Role="TBLEntryDetails" Type="Self.TBLEntryDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLRegionMaster">
+              <PropertyRef Name="RegionID" />
+            </Principal>
+            <Dependent Role="TBLEntryDetails">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBLEntryD__TaskT__4E88ABD4">
+          <End Role="TBLTaskTypeMaster" Type="Self.TBLTaskTypeMaster" Multiplicity="0..1" />
+          <End Role="TBLEntryDetails" Type="Self.TBLEntryDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLTaskTypeMaster">
+              <PropertyRef Name="TaskTypeID" />
+            </Principal>
+            <Dependent Role="TBLEntryDetails">
+              <PropertyRef Name="TaskTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBLEntryD__TaskT__4F7CD00D">
+          <End Role="TBLTaskTypeMaster" Type="Self.TBLTaskTypeMaster" Multiplicity="0..1" />
+          <End Role="TBLEntryDetails" Type="Self.TBLEntryDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLTaskTypeMaster">
+              <PropertyRef Name="TaskTypeID" />
+            </Principal>
+            <Dependent Role="TBLEntryDetails">
+              <PropertyRef Name="TaskTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBLEntryD__TottI__5070F446">
+          <End Role="TBLTOTTMaster" Type="Self.TBLTOTTMaster" Multiplicity="0..1" />
+          <End Role="TBLEntryDetails" Type="Self.TBLEntryDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLTOTTMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLEntryDetails">
+              <PropertyRef Name="TottID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBLEntryD__TottI__5165187F">
+          <End Role="TBLTOTTMaster" Type="Self.TBLTOTTMaster" Multiplicity="0..1" />
+          <End Role="TBLEntryDetails" Type="Self.TBLEntryDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLTOTTMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLEntryDetails">
+              <PropertyRef Name="TottID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBLUsersD__RoleI__5812160E">
+          <End Role="TBLRoleMaster" Type="Self.TBLRoleMaster" Multiplicity="0..1" />
+          <End Role="TBLUsersDetails" Type="Self.TBLUsersDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLRoleMaster">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="TBLUsersDetails">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBLUsersD__RoleI__59063A47">
+          <End Role="TBLRoleMaster" Type="Self.TBLRoleMaster" Multiplicity="0..1" />
+          <End Role="TBLUsersDetails" Type="Self.TBLUsersDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLRoleMaster">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="TBLUsersDetails">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnvironmentMasterReleaseEntry">
+          <End Role="TBLEnvironmentMaster" Type="Self.TBLEnvironmentMaster" Multiplicity="1" />
+          <End Role="TBLReleaseEntry" Type="Self.TBLReleaseEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLEnvironmentMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLReleaseEntry">
+              <PropertyRef Name="EnvironmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReleaseEntryReleaseEntryDetails">
+          <End Role="TBLReleaseEntry" Type="Self.TBLReleaseEntry" Multiplicity="1" />
+          <End Role="TBLReleaseEntryDetails" Type="Self.TBLReleaseEntryDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLReleaseEntry">
+              <PropertyRef Name="ReleaseID" />
+            </Principal>
+            <Dependent Role="TBLReleaseEntryDetails">
+              <PropertyRef Name="ReleaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReleaseMasterReleaseEntry">
+          <End Role="TBLReleaseMaster" Type="Self.TBLReleaseMaster" Multiplicity="1" />
+          <End Role="TBLReleaseEntry" Type="Self.TBLReleaseEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLReleaseMaster">
+              <PropertyRef Name="BuildNo" />
+            </Principal>
+            <Dependent Role="TBLReleaseEntry">
+              <PropertyRef Name="BuildNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLTOTTMaster_TBLRegionMaster">
+          <End Role="TBLRegionMaster" Type="Self.TBLRegionMaster" Multiplicity="1" />
+          <End Role="TBLTOTTMaster" Type="Self.TBLTOTTMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLRegionMaster">
+              <PropertyRef Name="RegionID" />
+            </Principal>
+            <Dependent Role="TBLTOTTMaster">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLTOTTMaster_TBLTaskTypeMaster">
+          <End Role="TBLTaskTypeMaster" Type="Self.TBLTaskTypeMaster" Multiplicity="1" />
+          <End Role="TBLTOTTMaster" Type="Self.TBLTOTTMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLTaskTypeMaster">
+              <PropertyRef Name="TaskTypeID" />
+            </Principal>
+            <Dependent Role="TBLTOTTMaster">
+              <PropertyRef Name="TaskTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TOTTMasterReleaseEntryDetails">
+          <End Role="TBLTOTTMaster" Type="Self.TBLTOTTMaster" Multiplicity="1" />
+          <End Role="TBLReleaseEntryDetails" Type="Self.TBLReleaseEntryDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLTOTTMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLReleaseEntryDetails">
+              <PropertyRef Name="TOTTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ELMAH_GetErrorsXml" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Application" Type="nvarchar" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="TotalCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="ELMAH_GetErrorXml" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Application" Type="nvarchar" Mode="In" />
+          <Parameter Name="ErrorId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="ELMAH_LogError" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ErrorId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Application" Type="nvarchar" Mode="In" />
+          <Parameter Name="Host" Type="nvarchar" Mode="In" />
+          <Parameter Name="Type" Type="nvarchar" Mode="In" />
+          <Parameter Name="Source" Type="nvarchar" Mode="In" />
+          <Parameter Name="Message" Type="nvarchar" Mode="In" />
+          <Parameter Name="User" Type="nvarchar" Mode="In" />
+          <Parameter Name="AllXml" Type="ntext" Mode="In" />
+          <Parameter Name="StatusCode" Type="int" Mode="In" />
+          <Parameter Name="TimeUtc" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="GetAllRegion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllTottMaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllUserDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetTottTaskType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="ReportingToolAutomationModelStoreContainer">
+          <EntitySet Name="TBLEntryDetails" EntityType="Self.TBLEntryDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLEnvironmentMaster" EntityType="Self.TBLEnvironmentMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLRegionMaster" EntityType="Self.TBLRegionMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLReleaseEntry" EntityType="Self.TBLReleaseEntry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLReleaseMaster" EntityType="Self.TBLReleaseMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLRoleMaster" EntityType="Self.TBLRoleMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLTaskTypeMaster" EntityType="Self.TBLTaskTypeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLTOTTMaster" EntityType="Self.TBLTOTTMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLUsersDetails" EntityType="Self.TBLUsersDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ELMAH_Error" EntityType="Self.ELMAH_Error" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ELMAH_Error].[ErrorId] AS [ErrorId], 
+    [ELMAH_Error].[Application] AS [Application], 
+    [ELMAH_Error].[Host] AS [Host], 
+    [ELMAH_Error].[Type] AS [Type], 
+    [ELMAH_Error].[Source] AS [Source], 
+    [ELMAH_Error].[Message] AS [Message], 
+    [ELMAH_Error].[User] AS [User], 
+    [ELMAH_Error].[StatusCode] AS [StatusCode], 
+    [ELMAH_Error].[TimeUtc] AS [TimeUtc], 
+    [ELMAH_Error].[Sequence] AS [Sequence], 
+    [ELMAH_Error].[AllXml] AS [AllXml]
+    FROM [dbo].[ELMAH_Error] AS [ELMAH_Error]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TBLReleaseEntryDetails" EntityType="Self.TBLReleaseEntryDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TBLReleaseEntryDetails].[ReleaseID] AS [ReleaseID], 
+    [TBLReleaseEntryDetails].[TOTTID] AS [TOTTID], 
+    [TBLReleaseEntryDetails].[Remark] AS [Remark], 
+    [TBLReleaseEntryDetails].[AssignedTo] AS [AssignedTo]
+    FROM [dbo].[TBLReleaseEntryDetails] AS [TBLReleaseEntryDetails]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__TBLEntryD__Regio__4CA06362" Association="Self.FK__TBLEntryD__Regio__4CA06362">
+            <End Role="TBLRegionMaster" EntitySet="TBLRegionMaster" />
+            <End Role="TBLEntryDetails" EntitySet="TBLEntryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBLEntryD__Regio__4D94879B" Association="Self.FK__TBLEntryD__Regio__4D94879B">
+            <End Role="TBLRegionMaster" EntitySet="TBLRegionMaster" />
+            <End Role="TBLEntryDetails" EntitySet="TBLEntryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBLEntryD__TaskT__4E88ABD4" Association="Self.FK__TBLEntryD__TaskT__4E88ABD4">
+            <End Role="TBLTaskTypeMaster" EntitySet="TBLTaskTypeMaster" />
+            <End Role="TBLEntryDetails" EntitySet="TBLEntryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBLEntryD__TaskT__4F7CD00D" Association="Self.FK__TBLEntryD__TaskT__4F7CD00D">
+            <End Role="TBLTaskTypeMaster" EntitySet="TBLTaskTypeMaster" />
+            <End Role="TBLEntryDetails" EntitySet="TBLEntryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBLEntryD__TottI__5070F446" Association="Self.FK__TBLEntryD__TottI__5070F446">
+            <End Role="TBLTOTTMaster" EntitySet="TBLTOTTMaster" />
+            <End Role="TBLEntryDetails" EntitySet="TBLEntryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBLEntryD__TottI__5165187F" Association="Self.FK__TBLEntryD__TottI__5165187F">
+            <End Role="TBLTOTTMaster" EntitySet="TBLTOTTMaster" />
+            <End Role="TBLEntryDetails" EntitySet="TBLEntryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBLUsersD__RoleI__5812160E" Association="Self.FK__TBLUsersD__RoleI__5812160E">
+            <End Role="TBLRoleMaster" EntitySet="TBLRoleMaster" />
+            <End Role="TBLUsersDetails" EntitySet="TBLUsersDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBLUsersD__RoleI__59063A47" Association="Self.FK__TBLUsersD__RoleI__59063A47">
+            <End Role="TBLRoleMaster" EntitySet="TBLRoleMaster" />
+            <End Role="TBLUsersDetails" EntitySet="TBLUsersDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnvironmentMasterReleaseEntry" Association="Self.FK_EnvironmentMasterReleaseEntry">
+            <End Role="TBLEnvironmentMaster" EntitySet="TBLEnvironmentMaster" />
+            <End Role="TBLReleaseEntry" EntitySet="TBLReleaseEntry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReleaseEntryReleaseEntryDetails" Association="Self.FK_ReleaseEntryReleaseEntryDetails">
+            <End Role="TBLReleaseEntry" EntitySet="TBLReleaseEntry" />
+            <End Role="TBLReleaseEntryDetails" EntitySet="TBLReleaseEntryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReleaseMasterReleaseEntry" Association="Self.FK_ReleaseMasterReleaseEntry">
+            <End Role="TBLReleaseMaster" EntitySet="TBLReleaseMaster" />
+            <End Role="TBLReleaseEntry" EntitySet="TBLReleaseEntry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLTOTTMaster_TBLRegionMaster" Association="Self.FK_TBLTOTTMaster_TBLRegionMaster">
+            <End Role="TBLRegionMaster" EntitySet="TBLRegionMaster" />
+            <End Role="TBLTOTTMaster" EntitySet="TBLTOTTMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLTOTTMaster_TBLTaskTypeMaster" Association="Self.FK_TBLTOTTMaster_TBLTaskTypeMaster">
+            <End Role="TBLTaskTypeMaster" EntitySet="TBLTaskTypeMaster" />
+            <End Role="TBLTOTTMaster" EntitySet="TBLTOTTMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TOTTMasterReleaseEntryDetails" Association="Self.FK_TOTTMasterReleaseEntryDetails">
+            <End Role="TBLTOTTMaster" EntitySet="TBLTOTTMaster" />
+            <End Role="TBLReleaseEntryDetails" EntitySet="TBLReleaseEntryDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ReportingToolAutomationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBLEntryDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnterpriseId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TottNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TottDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TaskTypeID" Type="Int32" />
+          <Property Name="TotalHrs" Type="Decimal" Precision="18" Scale="1" />
+          <Property Name="RegionID" Type="Int32" />
+          <Property Name="TaskDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="TottID" Type="Int32" />
+          <NavigationProperty Name="TBLRegionMaster" Relationship="Self.FK__TBLEntryD__Regio__4CA06362" FromRole="TBLEntryDetails" ToRole="TBLRegionMaster" />
+          <NavigationProperty Name="TBLRegionMaster1" Relationship="Self.FK__TBLEntryD__Regio__4D94879B" FromRole="TBLEntryDetails" ToRole="TBLRegionMaster" />
+          <NavigationProperty Name="TBLTaskTypeMaster" Relationship="Self.FK__TBLEntryD__TaskT__4E88ABD4" FromRole="TBLEntryDetails" ToRole="TBLTaskTypeMaster" />
+          <NavigationProperty Name="TBLTaskTypeMaster1" Relationship="Self.FK__TBLEntryD__TaskT__4F7CD00D" FromRole="TBLEntryDetails" ToRole="TBLTaskTypeMaster" />
+          <NavigationProperty Name="TBLTOTTMaster" Relationship="Self.FK__TBLEntryD__TottI__5070F446" FromRole="TBLEntryDetails" ToRole="TBLTOTTMaster" />
+          <NavigationProperty Name="TBLTOTTMaster1" Relationship="Self.FK__TBLEntryD__TottI__5165187F" FromRole="TBLEntryDetails" ToRole="TBLTOTTMaster" />
+        </EntityType>
+        <EntityType Name="TBLEnvironmentMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnvironmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Createdby" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modifiedby" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TBLReleaseEntries" Relationship="Self.FK_EnvironmentMasterReleaseEntry" FromRole="TBLEnvironmentMaster" ToRole="TBLReleaseEntry" />
+        </EntityType>
+        <EntityType Name="TBLRegionMaster">
+          <Key>
+            <PropertyRef Name="RegionID" />
+          </Key>
+          <Property Name="RegionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Region" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBLEntryDetails" Relationship="Self.FK__TBLEntryD__Regio__4CA06362" FromRole="TBLRegionMaster" ToRole="TBLEntryDetails" />
+          <NavigationProperty Name="TBLEntryDetails1" Relationship="Self.FK__TBLEntryD__Regio__4D94879B" FromRole="TBLRegionMaster" ToRole="TBLEntryDetails" />
+          <NavigationProperty Name="TBLTOTTMasters" Relationship="Self.FK_TBLTOTTMaster_TBLRegionMaster" FromRole="TBLRegionMaster" ToRole="TBLTOTTMaster" />
+        </EntityType>
+        <EntityType Name="TBLReleaseEntry">
+          <Key>
+            <PropertyRef Name="ReleaseID" />
+          </Key>
+          <Property Name="ReleaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuildNo" Type="Int32" Nullable="false" />
+          <Property Name="EnvironmentID" Type="Int32" Nullable="false" />
+          <Property Name="ReleaseDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReleaseBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TBLEnvironmentMaster" Relationship="Self.FK_EnvironmentMasterReleaseEntry" FromRole="TBLReleaseEntry" ToRole="TBLEnvironmentMaster" />
+          <NavigationProperty Name="TBLReleaseEntryDetails" Relationship="Self.FK_ReleaseEntryReleaseEntryDetails" FromRole="TBLReleaseEntry" ToRole="TBLReleaseEntryDetails" />
+          <NavigationProperty Name="TBLReleaseMaster" Relationship="Self.FK_ReleaseMasterReleaseEntry" FromRole="TBLReleaseEntry" ToRole="TBLReleaseMaster" />
+        </EntityType>
+        <EntityType Name="TBLReleaseMaster">
+          <Key>
+            <PropertyRef Name="BuildNo" />
+          </Key>
+          <Property Name="BuildNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReleaseNo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modifiedby" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TBLReleaseEntries" Relationship="Self.FK_ReleaseMasterReleaseEntry" FromRole="TBLReleaseMaster" ToRole="TBLReleaseEntry" />
+        </EntityType>
+        <EntityType Name="TBLRoleMaster">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBLUsersDetails" Relationship="Self.FK__TBLUsersD__RoleI__5812160E" FromRole="TBLRoleMaster" ToRole="TBLUsersDetails" />
+          <NavigationProperty Name="TBLUsersDetails1" Relationship="Self.FK__TBLUsersD__RoleI__59063A47" FromRole="TBLRoleMaster" ToRole="TBLUsersDetails" />
+        </EntityType>
+        <EntityType Name="TBLTaskTypeMaster">
+          <Key>
+            <PropertyRef Name="TaskTypeID" />
+          </Key>
+          <Property Name="TaskTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskType" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isTottTask" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBLEntryDetails" Relationship="Self.FK__TBLEntryD__TaskT__4E88ABD4" FromRole="TBLTaskTypeMaster" ToRole="TBLEntryDetails" />
+          <NavigationProperty Name="TBLEntryDetails1" Relationship="Self.FK__TBLEntryD__TaskT__4F7CD00D" FromRole="TBLTaskTypeMaster" ToRole="TBLEntryDetails" />
+          <NavigationProperty Name="TBLTOTTMasters" Relationship="Self.FK_TBLTOTTMaster_TBLTaskTypeMaster" FromRole="TBLTaskTypeMaster" ToRole="TBLTOTTMaster" />
+        </EntityType>
+        <EntityType Name="TBLTOTTMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TottNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TottDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TaskTypeID" Type="Int32" Nullable="false" />
+          <Property Name="RegionID" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="WorkedBy" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="isDevDeployed" Type="Boolean" Nullable="false" />
+          <Property Name="isTestDeployed" Type="Boolean" Nullable="false" />
+          <Property Name="isPrd8Deployed" Type="Boolean" Nullable="false" />
+          <Property Name="isProdDeployed" Type="Boolean" Nullable="false" />
+          <Property Name="containsCodeChange" Type="Boolean" Nullable="false" />
+          <Property Name="containsDBChange" Type="Boolean" Nullable="false" />
+          <Property Name="containsConfigChange" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TBLEntryDetails" Relationship="Self.FK__TBLEntryD__TottI__5070F446" FromRole="TBLTOTTMaster" ToRole="TBLEntryDetails" />
+          <NavigationProperty Name="TBLEntryDetails1" Relationship="Self.FK__TBLEntryD__TottI__5165187F" FromRole="TBLTOTTMaster" ToRole="TBLEntryDetails" />
+          <NavigationProperty Name="TBLRegionMaster" Relationship="Self.FK_TBLTOTTMaster_TBLRegionMaster" FromRole="TBLTOTTMaster" ToRole="TBLRegionMaster" />
+          <NavigationProperty Name="TBLTaskTypeMaster" Relationship="Self.FK_TBLTOTTMaster_TBLTaskTypeMaster" FromRole="TBLTOTTMaster" ToRole="TBLTaskTypeMaster" />
+          <NavigationProperty Name="TBLReleaseEntryDetails" Relationship="Self.FK_TOTTMasterReleaseEntryDetails" FromRole="TBLTOTTMaster" ToRole="TBLReleaseEntryDetails" />
+        </EntityType>
+        <EntityType Name="TBLUsersDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnterpriseId" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EnterpriseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="EmailId" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="UserPassword" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="TBLRoleMaster" Relationship="Self.FK__TBLUsersD__RoleI__5812160E" FromRole="TBLUsersDetails" ToRole="TBLRoleMaster" />
+          <NavigationProperty Name="TBLRoleMaster1" Relationship="Self.FK__TBLUsersD__RoleI__59063A47" FromRole="TBLUsersDetails" ToRole="TBLRoleMaster" />
+        </EntityType>
+        <EntityType Name="ELMAH_Error">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+            <PropertyRef Name="Application" />
+            <PropertyRef Name="Host" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="Source" />
+            <PropertyRef Name="Message" />
+            <PropertyRef Name="User" />
+            <PropertyRef Name="StatusCode" />
+            <PropertyRef Name="TimeUtc" />
+            <PropertyRef Name="Sequence" />
+            <PropertyRef Name="AllXml" />
+          </Key>
+          <Property Name="ErrorId" Type="Guid" Nullable="false" />
+          <Property Name="Application" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Source" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StatusCode" Type="Int32" Nullable="false" />
+          <Property Name="TimeUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sequence" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AllXml" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLReleaseEntryDetail">
+          <Key>
+            <PropertyRef Name="ReleaseID" />
+            <PropertyRef Name="TOTTID" />
+          </Key>
+          <Property Name="ReleaseID" Type="Int32" Nullable="false" />
+          <Property Name="TOTTID" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AssignedTo" Type="Int32" />
+          <NavigationProperty Name="TBLReleaseEntry" Relationship="Self.FK_ReleaseEntryReleaseEntryDetails" FromRole="TBLReleaseEntryDetails" ToRole="TBLReleaseEntry" />
+          <NavigationProperty Name="TBLTOTTMaster" Relationship="Self.FK_TOTTMasterReleaseEntryDetails" FromRole="TBLReleaseEntryDetails" ToRole="TBLTOTTMaster" />
+        </EntityType>
+        <Association Name="FK__TBLEntryD__Regio__4CA06362">
+          <End Role="TBLRegionMaster" Type="Self.TBLRegionMaster" Multiplicity="0..1" />
+          <End Role="TBLEntryDetails" Type="Self.TBLEntryDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLRegionMaster">
+              <PropertyRef Name="RegionID" />
+            </Principal>
+            <Dependent Role="TBLEntryDetails">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBLEntryD__Regio__4D94879B">
+          <End Role="TBLRegionMaster" Type="Self.TBLRegionMaster" Multiplicity="0..1" />
+          <End Role="TBLEntryDetails" Type="Self.TBLEntryDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLRegionMaster">
+              <PropertyRef Name="RegionID" />
+            </Principal>
+            <Dependent Role="TBLEntryDetails">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBLEntryD__TaskT__4E88ABD4">
+          <End Role="TBLTaskTypeMaster" Type="Self.TBLTaskTypeMaster" Multiplicity="0..1" />
+          <End Role="TBLEntryDetails" Type="Self.TBLEntryDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLTaskTypeMaster">
+              <PropertyRef Name="TaskTypeID" />
+            </Principal>
+            <Dependent Role="TBLEntryDetails">
+              <PropertyRef Name="TaskTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBLEntryD__TaskT__4F7CD00D">
+          <End Role="TBLTaskTypeMaster" Type="Self.TBLTaskTypeMaster" Multiplicity="0..1" />
+          <End Role="TBLEntryDetails" Type="Self.TBLEntryDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLTaskTypeMaster">
+              <PropertyRef Name="TaskTypeID" />
+            </Principal>
+            <Dependent Role="TBLEntryDetails">
+              <PropertyRef Name="TaskTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBLEntryD__TottI__5070F446">
+          <End Role="TBLTOTTMaster" Type="Self.TBLTOTTMaster" Multiplicity="0..1" />
+          <End Role="TBLEntryDetails" Type="Self.TBLEntryDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLTOTTMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLEntryDetails">
+              <PropertyRef Name="TottID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBLEntryD__TottI__5165187F">
+          <End Role="TBLTOTTMaster" Type="Self.TBLTOTTMaster" Multiplicity="0..1" />
+          <End Role="TBLEntryDetails" Type="Self.TBLEntryDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLTOTTMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLEntryDetails">
+              <PropertyRef Name="TottID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnvironmentMasterReleaseEntry">
+          <End Role="TBLEnvironmentMaster" Type="Self.TBLEnvironmentMaster" Multiplicity="1" />
+          <End Role="TBLReleaseEntry" Type="Self.TBLReleaseEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLEnvironmentMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLReleaseEntry">
+              <PropertyRef Name="EnvironmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLTOTTMaster_TBLRegionMaster">
+          <End Role="TBLRegionMaster" Type="Self.TBLRegionMaster" Multiplicity="1" />
+          <End Role="TBLTOTTMaster" Type="Self.TBLTOTTMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLRegionMaster">
+              <PropertyRef Name="RegionID" />
+            </Principal>
+            <Dependent Role="TBLTOTTMaster">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReleaseEntryReleaseEntryDetails">
+          <End Role="TBLReleaseEntry" Type="Self.TBLReleaseEntry" Multiplicity="1" />
+          <End Role="TBLReleaseEntryDetails" Type="Self.TBLReleaseEntryDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLReleaseEntry">
+              <PropertyRef Name="ReleaseID" />
+            </Principal>
+            <Dependent Role="TBLReleaseEntryDetails">
+              <PropertyRef Name="ReleaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReleaseMasterReleaseEntry">
+          <End Role="TBLReleaseMaster" Type="Self.TBLReleaseMaster" Multiplicity="1" />
+          <End Role="TBLReleaseEntry" Type="Self.TBLReleaseEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLReleaseMaster">
+              <PropertyRef Name="BuildNo" />
+            </Principal>
+            <Dependent Role="TBLReleaseEntry">
+              <PropertyRef Name="BuildNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBLUsersD__RoleI__5812160E">
+          <End Role="TBLRoleMaster" Type="Self.TBLRoleMaster" Multiplicity="0..1" />
+          <End Role="TBLUsersDetails" Type="Self.TBLUsersDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLRoleMaster">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="TBLUsersDetails">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBLUsersD__RoleI__59063A47">
+          <End Role="TBLRoleMaster" Type="Self.TBLRoleMaster" Multiplicity="0..1" />
+          <End Role="TBLUsersDetails" Type="Self.TBLUsersDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLRoleMaster">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="TBLUsersDetails">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLTOTTMaster_TBLTaskTypeMaster">
+          <End Role="TBLTaskTypeMaster" Type="Self.TBLTaskTypeMaster" Multiplicity="1" />
+          <End Role="TBLTOTTMaster" Type="Self.TBLTOTTMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLTaskTypeMaster">
+              <PropertyRef Name="TaskTypeID" />
+            </Principal>
+            <Dependent Role="TBLTOTTMaster">
+              <PropertyRef Name="TaskTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TOTTMasterReleaseEntryDetails">
+          <End Role="TBLTOTTMaster" Type="Self.TBLTOTTMaster" Multiplicity="1" />
+          <End Role="TBLReleaseEntryDetails" Type="Self.TBLReleaseEntryDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLTOTTMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLReleaseEntryDetails">
+              <PropertyRef Name="TOTTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ReleaseManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBLEntryDetails" EntityType="Self.TBLEntryDetail" />
+          <EntitySet Name="TBLEnvironmentMasters" EntityType="Self.TBLEnvironmentMaster" />
+          <EntitySet Name="TBLRegionMasters" EntityType="Self.TBLRegionMaster" />
+          <EntitySet Name="TBLReleaseEntries" EntityType="Self.TBLReleaseEntry" />
+          <EntitySet Name="TBLReleaseMasters" EntityType="Self.TBLReleaseMaster" />
+          <EntitySet Name="TBLRoleMasters" EntityType="Self.TBLRoleMaster" />
+          <EntitySet Name="TBLTaskTypeMasters" EntityType="Self.TBLTaskTypeMaster" />
+          <EntitySet Name="TBLTOTTMasters" EntityType="Self.TBLTOTTMaster" />
+          <EntitySet Name="TBLUsersDetails" EntityType="Self.TBLUsersDetail" />
+          <EntitySet Name="ELMAH_Error" EntityType="Self.ELMAH_Error" />
+          <EntitySet Name="TBLReleaseEntryDetails" EntityType="Self.TBLReleaseEntryDetail" />
+          <AssociationSet Name="FK__TBLEntryD__Regio__4CA06362" Association="Self.FK__TBLEntryD__Regio__4CA06362">
+            <End Role="TBLRegionMaster" EntitySet="TBLRegionMasters" />
+            <End Role="TBLEntryDetails" EntitySet="TBLEntryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBLEntryD__Regio__4D94879B" Association="Self.FK__TBLEntryD__Regio__4D94879B">
+            <End Role="TBLRegionMaster" EntitySet="TBLRegionMasters" />
+            <End Role="TBLEntryDetails" EntitySet="TBLEntryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBLEntryD__TaskT__4E88ABD4" Association="Self.FK__TBLEntryD__TaskT__4E88ABD4">
+            <End Role="TBLTaskTypeMaster" EntitySet="TBLTaskTypeMasters" />
+            <End Role="TBLEntryDetails" EntitySet="TBLEntryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBLEntryD__TaskT__4F7CD00D" Association="Self.FK__TBLEntryD__TaskT__4F7CD00D">
+            <End Role="TBLTaskTypeMaster" EntitySet="TBLTaskTypeMasters" />
+            <End Role="TBLEntryDetails" EntitySet="TBLEntryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBLEntryD__TottI__5070F446" Association="Self.FK__TBLEntryD__TottI__5070F446">
+            <End Role="TBLTOTTMaster" EntitySet="TBLTOTTMasters" />
+            <End Role="TBLEntryDetails" EntitySet="TBLEntryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBLEntryD__TottI__5165187F" Association="Self.FK__TBLEntryD__TottI__5165187F">
+            <End Role="TBLTOTTMaster" EntitySet="TBLTOTTMasters" />
+            <End Role="TBLEntryDetails" EntitySet="TBLEntryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnvironmentMasterReleaseEntry" Association="Self.FK_EnvironmentMasterReleaseEntry">
+            <End Role="TBLEnvironmentMaster" EntitySet="TBLEnvironmentMasters" />
+            <End Role="TBLReleaseEntry" EntitySet="TBLReleaseEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLTOTTMaster_TBLRegionMaster" Association="Self.FK_TBLTOTTMaster_TBLRegionMaster">
+            <End Role="TBLRegionMaster" EntitySet="TBLRegionMasters" />
+            <End Role="TBLTOTTMaster" EntitySet="TBLTOTTMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReleaseEntryReleaseEntryDetails" Association="Self.FK_ReleaseEntryReleaseEntryDetails">
+            <End Role="TBLReleaseEntry" EntitySet="TBLReleaseEntries" />
+            <End Role="TBLReleaseEntryDetails" EntitySet="TBLReleaseEntryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReleaseMasterReleaseEntry" Association="Self.FK_ReleaseMasterReleaseEntry">
+            <End Role="TBLReleaseMaster" EntitySet="TBLReleaseMasters" />
+            <End Role="TBLReleaseEntry" EntitySet="TBLReleaseEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBLUsersD__RoleI__5812160E" Association="Self.FK__TBLUsersD__RoleI__5812160E">
+            <End Role="TBLRoleMaster" EntitySet="TBLRoleMasters" />
+            <End Role="TBLUsersDetails" EntitySet="TBLUsersDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBLUsersD__RoleI__59063A47" Association="Self.FK__TBLUsersD__RoleI__59063A47">
+            <End Role="TBLRoleMaster" EntitySet="TBLRoleMasters" />
+            <End Role="TBLUsersDetails" EntitySet="TBLUsersDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLTOTTMaster_TBLTaskTypeMaster" Association="Self.FK_TBLTOTTMaster_TBLTaskTypeMaster">
+            <End Role="TBLTaskTypeMaster" EntitySet="TBLTaskTypeMasters" />
+            <End Role="TBLTOTTMaster" EntitySet="TBLTOTTMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TOTTMasterReleaseEntryDetails" Association="Self.FK_TOTTMasterReleaseEntryDetails">
+            <End Role="TBLTOTTMaster" EntitySet="TBLTOTTMasters" />
+            <End Role="TBLReleaseEntryDetails" EntitySet="TBLReleaseEntryDetails" />
+          </AssociationSet>
+          <FunctionImport Name="ELMAH_GetErrorsXml" ReturnType="Collection(String)">
+            <Parameter Name="Application" Mode="In" Type="String" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="TotalCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ELMAH_GetErrorXml" ReturnType="Collection(String)">
+            <Parameter Name="Application" Mode="In" Type="String" />
+            <Parameter Name="ErrorId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="ELMAH_LogError">
+            <Parameter Name="ErrorId" Mode="In" Type="Guid" />
+            <Parameter Name="Application" Mode="In" Type="String" />
+            <Parameter Name="Host" Mode="In" Type="String" />
+            <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="Source" Mode="In" Type="String" />
+            <Parameter Name="Message" Mode="In" Type="String" />
+            <Parameter Name="User" Mode="In" Type="String" />
+            <Parameter Name="AllXml" Mode="In" Type="String" />
+            <Parameter Name="StatusCode" Mode="In" Type="Int32" />
+            <Parameter Name="TimeUtc" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllRegion" ReturnType="Collection(ReportingToolAutomationModel.GetAllRegion_Result)" />
+          <FunctionImport Name="GetAllTottMaster" ReturnType="Collection(ReportingToolAutomationModel.GetAllTottMaster_Result)" />
+          <FunctionImport Name="GetAllUserDetails" ReturnType="Collection(ReportingToolAutomationModel.GetAllUserDetails_Result)" />
+          <FunctionImport Name="GetTottTaskType" ReturnType="Collection(ReportingToolAutomationModel.GetTottTaskType_Result)" />
+        </EntityContainer>
+        <ComplexType Name="GetAllRegion_Result">
+          <Property Type="Int32" Name="RegionID" Nullable="false" />
+          <Property Type="String" Name="Region" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="300" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="300" />
+        </ComplexType>
+        <ComplexType Name="GetAllTottMaster_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="TottNo" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="TottDescription" Nullable="false" />
+          <Property Type="String" Name="TaskType" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Region" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="GetAllUserDetails_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="EnterpriseId" Nullable="false" MaxLength="300" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="EnterpriseName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="RoleID" Nullable="true" />
+          <Property Type="String" Name="EmailId" Nullable="false" MaxLength="300" />
+          <Property Type="Boolean" Name="isActive" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="300" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="300" />
+          <Property Type="Binary" Name="UserPassword" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetTottTaskType_Result">
+          <Property Type="Int32" Name="TaskTypeID" Nullable="false" />
+          <Property Type="String" Name="TaskType" Nullable="false" MaxLength="150" />
+          <Property Type="Boolean" Name="isTottTask" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="300" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="300" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ReportingToolAutomationModelStoreContainer" CdmEntityContainer="ReleaseManagementEntities">
+          <EntitySetMapping Name="TBLEntryDetails">
+            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLEntryDetail">
+              <MappingFragment StoreEntitySet="TBLEntryDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
+                <ScalarProperty Name="TottNo" ColumnName="TottNo" />
+                <ScalarProperty Name="TottDescription" ColumnName="TottDescription" />
+                <ScalarProperty Name="TaskTypeID" ColumnName="TaskTypeID" />
+                <ScalarProperty Name="TotalHrs" ColumnName="TotalHrs" />
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+                <ScalarProperty Name="TaskDate" ColumnName="TaskDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="TottID" ColumnName="TottID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLEnvironmentMasters">
+            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLEnvironmentMaster">
+              <MappingFragment StoreEntitySet="TBLEnvironmentMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EnvironmentName" ColumnName="EnvironmentName" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLRegionMasters">
+            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLRegionMaster">
+              <MappingFragment StoreEntitySet="TBLRegionMaster">
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLReleaseEntries">
+            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLReleaseEntry">
+              <MappingFragment StoreEntitySet="TBLReleaseEntry">
+                <ScalarProperty Name="ReleaseID" ColumnName="ReleaseID" />
+                <ScalarProperty Name="BuildNo" ColumnName="BuildNo" />
+                <ScalarProperty Name="EnvironmentID" ColumnName="EnvironmentID" />
+                <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+                <ScalarProperty Name="ReleaseBy" ColumnName="ReleaseBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLReleaseMasters">
+            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLReleaseMaster">
+              <MappingFragment StoreEntitySet="TBLReleaseMaster">
+                <ScalarProperty Name="BuildNo" ColumnName="BuildNo" />
+                <ScalarProperty Name="ReleaseNo" ColumnName="ReleaseNo" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLRoleMasters">
+            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLRoleMaster">
+              <MappingFragment StoreEntitySet="TBLRoleMaster">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLTaskTypeMasters">
+            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLTaskTypeMaster">
+              <MappingFragment StoreEntitySet="TBLTaskTypeMaster">
+                <ScalarProperty Name="TaskTypeID" ColumnName="TaskTypeID" />
+                <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+                <ScalarProperty Name="isTottTask" ColumnName="isTottTask" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLTOTTMasters">
+            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLTOTTMaster">
+              <MappingFragment StoreEntitySet="TBLTOTTMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TottNo" ColumnName="TottNo" />
+                <ScalarProperty Name="TottDescription" ColumnName="TottDescription" />
+                <ScalarProperty Name="TaskTypeID" ColumnName="TaskTypeID" />
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="WorkedBy" ColumnName="WorkedBy" />
+                <ScalarProperty Name="isDevDeployed" ColumnName="isDevDeployed" />
+                <ScalarProperty Name="isTestDeployed" ColumnName="isTestDeployed" />
+                <ScalarProperty Name="isPrd8Deployed" ColumnName="isPrd8Deployed" />
+                <ScalarProperty Name="isProdDeployed" ColumnName="isProdDeployed" />
+                <ScalarProperty Name="containsCodeChange" ColumnName="containsCodeChange" />
+                <ScalarProperty Name="containsDBChange" ColumnName="containsDBChange" />
+                <ScalarProperty Name="containsConfigChange" ColumnName="containsConfigChange" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLUsersDetails">
+            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLUsersDetail">
+              <MappingFragment StoreEntitySet="TBLUsersDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="EnterpriseName" ColumnName="EnterpriseName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ELMAH_Error">
+            <EntityTypeMapping TypeName="ReportingToolAutomationModel.ELMAH_Error">
+              <MappingFragment StoreEntitySet="ELMAH_Error">
+                <ScalarProperty Name="ErrorId" ColumnName="ErrorId" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="TimeUtc" ColumnName="TimeUtc" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="AllXml" ColumnName="AllXml" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLReleaseEntryDetails">
+            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLReleaseEntryDetail">
+              <MappingFragment StoreEntitySet="TBLReleaseEntryDetails">
+                <ScalarProperty Name="ReleaseID" ColumnName="ReleaseID" />
+                <ScalarProperty Name="TOTTID" ColumnName="TOTTID" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ELMAH_GetErrorsXml" FunctionName="ReportingToolAutomationModel.Store.ELMAH_GetErrorsXml" />
+          <FunctionImportMapping FunctionImportName="ELMAH_GetErrorXml" FunctionName="ReportingToolAutomationModel.Store.ELMAH_GetErrorXml" />
+          <FunctionImportMapping FunctionImportName="ELMAH_LogError" FunctionName="ReportingToolAutomationModel.Store.ELMAH_LogError" />
+          <FunctionImportMapping FunctionImportName="GetAllRegion" FunctionName="ReportingToolAutomationModel.Store.GetAllRegion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ReportingToolAutomationModel.GetAllRegion_Result">
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllTottMaster" FunctionName="ReportingToolAutomationModel.Store.GetAllTottMaster">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ReportingToolAutomationModel.GetAllTottMaster_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TottNo" ColumnName="TottNo" />
+                <ScalarProperty Name="TottDescription" ColumnName="TottDescription" />
+                <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllUserDetails" FunctionName="ReportingToolAutomationModel.Store.GetAllUserDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ReportingToolAutomationModel.GetAllUserDetails_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="EnterpriseName" ColumnName="EnterpriseName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetTottTaskType" FunctionName="ReportingToolAutomationModel.Store.GetTottTaskType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ReportingToolAutomationModel.GetTottTaskType_Result">
+                <ScalarProperty Name="TaskTypeID" ColumnName="TaskTypeID" />
+                <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+                <ScalarProperty Name="isTottTask" ColumnName="isTottTask" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
