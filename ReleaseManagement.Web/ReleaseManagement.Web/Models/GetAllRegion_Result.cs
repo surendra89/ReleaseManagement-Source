@@ -7,28 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ReleaseManagement.Web
+namespace ReleaseManagement.Web.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class TBLUsersDetail
+    public partial class GetAllRegion_Result
     {
-        public int ID { get; set; }
-        public string EnterpriseId { get; set; }
-        public string password { get; set; }
-        public string EnterpriseName { get; set; }
-        public Nullable<int> RoleID { get; set; }
-        public string EmailId { get; set; }
-        public Nullable<bool> isActive { get; set; }
+        public int RegionID { get; set; }
+        public string Region { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
-        public byte[] UserPassword { get; set; }
-        public Nullable<bool> IsDeleted { get; set; }
-    
-        public virtual TBLRoleMaster TBLRoleMaster { get; set; }
-        public virtual TBLRoleMaster TBLRoleMaster1 { get; set; }
     }
 }

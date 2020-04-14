@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ReleaseManagement.Web
+namespace ReleaseManagement.Web.Models
 {
     using System;
     using System.Data.Entity;
@@ -38,6 +38,24 @@ namespace ReleaseManagement.Web
         public virtual DbSet<TBLUsersDetail> TBLUsersDetails { get; set; }
         public virtual DbSet<ELMAH_Error> ELMAH_Error { get; set; }
         public virtual DbSet<TBLReleaseEntryDetail> TBLReleaseEntryDetails { get; set; }
+    
+        public virtual ObjectResult<string> CheckForDuplicateTottDesc(string tottDescription)
+        {
+            var tottDescriptionParameter = tottDescription != null ?
+                new ObjectParameter("TottDescription", tottDescription) :
+                new ObjectParameter("TottDescription", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("CheckForDuplicateTottDesc", tottDescriptionParameter);
+        }
+    
+        public virtual int DeleteTottMaster(string tottNo)
+        {
+            var tottNoParameter = tottNo != null ?
+                new ObjectParameter("TottNo", tottNo) :
+                new ObjectParameter("TottNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteTottMaster", tottNoParameter);
+        }
     
         public virtual ObjectResult<string> ELMAH_GetErrorsXml(string application, Nullable<int> pageIndex, Nullable<int> pageSize, ObjectParameter totalCount)
         {

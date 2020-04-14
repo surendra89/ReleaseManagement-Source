@@ -7,47 +7,33 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ReleaseManagement.Web
+namespace ReleaseManagement.Web.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TBLTOTTMaster
+    public partial class TBLRegionMaster
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TBLTOTTMaster()
+        public TBLRegionMaster()
         {
             this.TBLEntryDetails = new HashSet<TBLEntryDetail>();
             this.TBLEntryDetails1 = new HashSet<TBLEntryDetail>();
-            this.TBLReleaseEntryDetails = new HashSet<TBLReleaseEntryDetail>();
+            this.TBLTOTTMasters = new HashSet<TBLTOTTMaster>();
         }
     
-        public int ID { get; set; }
-        public string TottNo { get; set; }
-        public string TottDescription { get; set; }
-        public int TaskTypeID { get; set; }
         public int RegionID { get; set; }
-        public bool Deleted { get; set; }
+        public string Region { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
-        public string WorkedBy { get; set; }
-        public bool isDevDeployed { get; set; }
-        public bool isTestDeployed { get; set; }
-        public bool isPrd8Deployed { get; set; }
-        public bool isProdDeployed { get; set; }
-        public bool containsCodeChange { get; set; }
-        public bool containsDBChange { get; set; }
-        public bool containsConfigChange { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBLEntryDetail> TBLEntryDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBLEntryDetail> TBLEntryDetails1 { get; set; }
-        public virtual TBLRegionMaster TBLRegionMaster { get; set; }
-        public virtual TBLTaskTypeMaster TBLTaskTypeMaster { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TBLReleaseEntryDetail> TBLReleaseEntryDetails { get; set; }
+        public virtual ICollection<TBLTOTTMaster> TBLTOTTMasters { get; set; }
     }
 }

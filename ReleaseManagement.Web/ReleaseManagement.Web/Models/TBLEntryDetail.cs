@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ReleaseManagement.Web
+namespace ReleaseManagement.Web.Models
 {
     using System;
     using System.Collections.Generic;

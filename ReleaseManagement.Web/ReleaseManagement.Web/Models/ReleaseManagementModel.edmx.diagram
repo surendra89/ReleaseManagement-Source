@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="18fcfe0c800444d8adcdab74492f3d1d" Name="Diagram1">
+        <EntityTypeShape EntityType="ReleaseManagementModel.TBLEntryDetail" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReleaseManagementModel.TBLEnvironmentMaster" Width="1.5" PointX="3.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReleaseManagementModel.TBLRegionMaster" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReleaseManagementModel.TBLReleaseEntry" Width="1.5" PointX="6" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReleaseManagementModel.TBLReleaseMaster" Width="1.5" PointX="3.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReleaseManagementModel.TBLRoleMaster" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReleaseManagementModel.TBLTaskTypeMaster" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReleaseManagementModel.TBLTOTTMaster" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReleaseManagementModel.TBLUsersDetail" Width="1.5" PointX="11" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReleaseManagementModel.ELMAH_Error" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReleaseManagementModel.TBLReleaseEntryDetail" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="ReleaseManagementModel.FK__TBLEntryD__Regio__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="ReleaseManagementModel.FK__TBLEntryD__Regio__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="ReleaseManagementModel.FK__TBLEntryD__TaskT__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="ReleaseManagementModel.FK__TBLEntryD__TaskT__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="ReleaseManagementModel.FK__TBLEntryD__TottI__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="ReleaseManagementModel.FK__TBLEntryD__TottI__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="ReleaseManagementModel.FK_EnvironmentMasterReleaseEntry" ManuallyRouted="false" />
+        <AssociationConnector Association="ReleaseManagementModel.FK_TBLTOTTMaster_TBLRegionMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="ReleaseManagementModel.FK_ReleaseEntryReleaseEntryDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="ReleaseManagementModel.FK_ReleaseMasterReleaseEntry" ManuallyRouted="false" />
+        <AssociationConnector Association="ReleaseManagementModel.FK__TBLUsersD__RoleI__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="ReleaseManagementModel.FK__TBLUsersD__RoleI__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="ReleaseManagementModel.FK_TBLTOTTMaster_TBLTaskTypeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="ReleaseManagementModel.FK_TOTTMasterReleaseEntryDetails" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

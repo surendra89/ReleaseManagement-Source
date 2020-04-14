@@ -7,22 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ReleaseManagement.Web
+namespace ReleaseManagement.Web.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TBLEnvironmentMaster
+    public partial class TBLReleaseMaster
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TBLEnvironmentMaster()
+        public TBLReleaseMaster()
         {
             this.TBLReleaseEntries = new HashSet<TBLReleaseEntry>();
         }
     
-        public int ID { get; set; }
-        public string EnvironmentName { get; set; }
-        public int Createdby { get; set; }
+        public int BuildNo { get; set; }
+        public string ReleaseNo { get; set; }
+        public int CreatedBy { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public Nullable<int> Modifiedby { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }

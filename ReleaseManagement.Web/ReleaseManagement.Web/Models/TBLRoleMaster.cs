@@ -7,34 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ReleaseManagement.Web
+namespace ReleaseManagement.Web.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TBLTaskTypeMaster
+    public partial class TBLRoleMaster
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TBLTaskTypeMaster()
+        public TBLRoleMaster()
         {
-            this.TBLEntryDetails = new HashSet<TBLEntryDetail>();
-            this.TBLEntryDetails1 = new HashSet<TBLEntryDetail>();
-            this.TBLTOTTMasters = new HashSet<TBLTOTTMaster>();
+            this.TBLUsersDetails = new HashSet<TBLUsersDetail>();
+            this.TBLUsersDetails1 = new HashSet<TBLUsersDetail>();
         }
     
-        public int TaskTypeID { get; set; }
-        public string TaskType { get; set; }
-        public bool isTottTask { get; set; }
+        public int RoleID { get; set; }
+        public string Role { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TBLEntryDetail> TBLEntryDetails { get; set; }
+        public virtual ICollection<TBLUsersDetail> TBLUsersDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TBLEntryDetail> TBLEntryDetails1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TBLTOTTMaster> TBLTOTTMasters { get; set; }
+        public virtual ICollection<TBLUsersDetail> TBLUsersDetails1 { get; set; }
     }
 }

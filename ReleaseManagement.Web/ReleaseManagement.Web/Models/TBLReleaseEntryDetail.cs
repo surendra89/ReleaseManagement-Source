@@ -7,16 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ReleaseManagement.Web
+namespace ReleaseManagement.Web.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class GetAllTottMaster_Result
+    public partial class TBLReleaseEntryDetail
     {
-        public int ID { get; set; }
-        public string TottNo { get; set; }
-        public string TottDescription { get; set; }
-        public string TaskType { get; set; }
-        public string Region { get; set; }
+        public int ReleaseID { get; set; }
+        public int TOTTID { get; set; }
+        public string Remark { get; set; }
+        public Nullable<int> AssignedTo { get; set; }
+    
+        public virtual TBLReleaseEntry TBLReleaseEntry { get; set; }
+        public virtual TBLTOTTMaster TBLTOTTMaster { get; set; }
     }
 }

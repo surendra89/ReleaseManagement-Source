@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ReportingToolAutomationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ReleaseManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'ReportingToolAutomation.dbo.ELMAH_Error' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ELMAH_Error">
@@ -340,6 +340,12 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="CheckForDuplicateTottDesc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TottDescription" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DeleteTottMaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TottNo" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="ELMAH_GetErrorsXml" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Application" Type="nvarchar" Mode="In" />
           <Parameter Name="PageIndex" Type="int" Mode="In" />
@@ -366,7 +372,7 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
         <Function Name="GetAllTottMaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllUserDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetTottTaskType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="ReportingToolAutomationModelStoreContainer">
+        <EntityContainer Name="ReleaseManagementModelStoreContainer">
           <EntitySet Name="TBLEntryDetails" EntityType="Self.TBLEntryDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLEnvironmentMaster" EntityType="Self.TBLEnvironmentMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLRegionMaster" EntityType="Self.TBLRegionMaster" Schema="dbo" store:Type="Tables" />
@@ -460,7 +466,7 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ReportingToolAutomationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ReleaseManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="TBLEntryDetail">
           <Key>
             <PropertyRef Name="ID" />
@@ -888,6 +894,12 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
             <End Role="TBLTOTTMaster" EntitySet="TBLTOTTMasters" />
             <End Role="TBLReleaseEntryDetails" EntitySet="TBLReleaseEntryDetails" />
           </AssociationSet>
+          <FunctionImport Name="CheckForDuplicateTottDesc" ReturnType="Collection(String)">
+            <Parameter Name="TottDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteTottMaster">
+            <Parameter Name="TottNo" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="ELMAH_GetErrorsXml" ReturnType="Collection(String)">
             <Parameter Name="Application" Mode="In" Type="String" />
             <Parameter Name="PageIndex" Mode="In" Type="Int32" />
@@ -910,10 +922,10 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
             <Parameter Name="StatusCode" Mode="In" Type="Int32" />
             <Parameter Name="TimeUtc" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="GetAllRegion" ReturnType="Collection(ReportingToolAutomationModel.GetAllRegion_Result)" />
-          <FunctionImport Name="GetAllTottMaster" ReturnType="Collection(ReportingToolAutomationModel.GetAllTottMaster_Result)" />
-          <FunctionImport Name="GetAllUserDetails" ReturnType="Collection(ReportingToolAutomationModel.GetAllUserDetails_Result)" />
-          <FunctionImport Name="GetTottTaskType" ReturnType="Collection(ReportingToolAutomationModel.GetTottTaskType_Result)" />
+          <FunctionImport Name="GetAllRegion" ReturnType="Collection(ReleaseManagementModel.GetAllRegion_Result)" />
+          <FunctionImport Name="GetAllTottMaster" ReturnType="Collection(ReleaseManagementModel.GetAllTottMaster_Result)" />
+          <FunctionImport Name="GetAllUserDetails" ReturnType="Collection(ReleaseManagementModel.GetAllUserDetails_Result)" />
+          <FunctionImport Name="GetTottTaskType" ReturnType="Collection(ReleaseManagementModel.GetTottTaskType_Result)" />
         </EntityContainer>
         <ComplexType Name="GetAllRegion_Result">
           <Property Type="Int32" Name="RegionID" Nullable="false" />
@@ -959,9 +971,9 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ReportingToolAutomationModelStoreContainer" CdmEntityContainer="ReleaseManagementEntities">
+        <EntityContainerMapping StorageEntityContainer="ReleaseManagementModelStoreContainer" CdmEntityContainer="ReleaseManagementEntities">
           <EntitySetMapping Name="TBLEntryDetails">
-            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLEntryDetail">
+            <EntityTypeMapping TypeName="ReleaseManagementModel.TBLEntryDetail">
               <MappingFragment StoreEntitySet="TBLEntryDetails">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
@@ -980,7 +992,7 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TBLEnvironmentMasters">
-            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLEnvironmentMaster">
+            <EntityTypeMapping TypeName="ReleaseManagementModel.TBLEnvironmentMaster">
               <MappingFragment StoreEntitySet="TBLEnvironmentMaster">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="EnvironmentName" ColumnName="EnvironmentName" />
@@ -992,7 +1004,7 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TBLRegionMasters">
-            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLRegionMaster">
+            <EntityTypeMapping TypeName="ReleaseManagementModel.TBLRegionMaster">
               <MappingFragment StoreEntitySet="TBLRegionMaster">
                 <ScalarProperty Name="RegionID" ColumnName="RegionID" />
                 <ScalarProperty Name="Region" ColumnName="Region" />
@@ -1004,7 +1016,7 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TBLReleaseEntries">
-            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLReleaseEntry">
+            <EntityTypeMapping TypeName="ReleaseManagementModel.TBLReleaseEntry">
               <MappingFragment StoreEntitySet="TBLReleaseEntry">
                 <ScalarProperty Name="ReleaseID" ColumnName="ReleaseID" />
                 <ScalarProperty Name="BuildNo" ColumnName="BuildNo" />
@@ -1017,7 +1029,7 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TBLReleaseMasters">
-            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLReleaseMaster">
+            <EntityTypeMapping TypeName="ReleaseManagementModel.TBLReleaseMaster">
               <MappingFragment StoreEntitySet="TBLReleaseMaster">
                 <ScalarProperty Name="BuildNo" ColumnName="BuildNo" />
                 <ScalarProperty Name="ReleaseNo" ColumnName="ReleaseNo" />
@@ -1029,7 +1041,7 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TBLRoleMasters">
-            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLRoleMaster">
+            <EntityTypeMapping TypeName="ReleaseManagementModel.TBLRoleMaster">
               <MappingFragment StoreEntitySet="TBLRoleMaster">
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="Role" ColumnName="Role" />
@@ -1041,7 +1053,7 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TBLTaskTypeMasters">
-            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLTaskTypeMaster">
+            <EntityTypeMapping TypeName="ReleaseManagementModel.TBLTaskTypeMaster">
               <MappingFragment StoreEntitySet="TBLTaskTypeMaster">
                 <ScalarProperty Name="TaskTypeID" ColumnName="TaskTypeID" />
                 <ScalarProperty Name="TaskType" ColumnName="TaskType" />
@@ -1054,7 +1066,7 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TBLTOTTMasters">
-            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLTOTTMaster">
+            <EntityTypeMapping TypeName="ReleaseManagementModel.TBLTOTTMaster">
               <MappingFragment StoreEntitySet="TBLTOTTMaster">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TottNo" ColumnName="TottNo" />
@@ -1078,7 +1090,7 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TBLUsersDetails">
-            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLUsersDetail">
+            <EntityTypeMapping TypeName="ReleaseManagementModel.TBLUsersDetail">
               <MappingFragment StoreEntitySet="TBLUsersDetails">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
@@ -1097,7 +1109,7 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ELMAH_Error">
-            <EntityTypeMapping TypeName="ReportingToolAutomationModel.ELMAH_Error">
+            <EntityTypeMapping TypeName="ReleaseManagementModel.ELMAH_Error">
               <MappingFragment StoreEntitySet="ELMAH_Error">
                 <ScalarProperty Name="ErrorId" ColumnName="ErrorId" />
                 <ScalarProperty Name="Application" ColumnName="Application" />
@@ -1114,7 +1126,7 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TBLReleaseEntryDetails">
-            <EntityTypeMapping TypeName="ReportingToolAutomationModel.TBLReleaseEntryDetail">
+            <EntityTypeMapping TypeName="ReleaseManagementModel.TBLReleaseEntryDetail">
               <MappingFragment StoreEntitySet="TBLReleaseEntryDetails">
                 <ScalarProperty Name="ReleaseID" ColumnName="ReleaseID" />
                 <ScalarProperty Name="TOTTID" ColumnName="TOTTID" />
@@ -1123,12 +1135,14 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="ELMAH_GetErrorsXml" FunctionName="ReportingToolAutomationModel.Store.ELMAH_GetErrorsXml" />
-          <FunctionImportMapping FunctionImportName="ELMAH_GetErrorXml" FunctionName="ReportingToolAutomationModel.Store.ELMAH_GetErrorXml" />
-          <FunctionImportMapping FunctionImportName="ELMAH_LogError" FunctionName="ReportingToolAutomationModel.Store.ELMAH_LogError" />
-          <FunctionImportMapping FunctionImportName="GetAllRegion" FunctionName="ReportingToolAutomationModel.Store.GetAllRegion">
+          <FunctionImportMapping FunctionImportName="CheckForDuplicateTottDesc" FunctionName="ReleaseManagementModel.Store.CheckForDuplicateTottDesc" />
+          <FunctionImportMapping FunctionImportName="DeleteTottMaster" FunctionName="ReleaseManagementModel.Store.DeleteTottMaster" />
+          <FunctionImportMapping FunctionImportName="ELMAH_GetErrorsXml" FunctionName="ReleaseManagementModel.Store.ELMAH_GetErrorsXml" />
+          <FunctionImportMapping FunctionImportName="ELMAH_GetErrorXml" FunctionName="ReleaseManagementModel.Store.ELMAH_GetErrorXml" />
+          <FunctionImportMapping FunctionImportName="ELMAH_LogError" FunctionName="ReleaseManagementModel.Store.ELMAH_LogError" />
+          <FunctionImportMapping FunctionImportName="GetAllRegion" FunctionName="ReleaseManagementModel.Store.GetAllRegion">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ReportingToolAutomationModel.GetAllRegion_Result">
+              <ComplexTypeMapping TypeName="ReleaseManagementModel.GetAllRegion_Result">
                 <ScalarProperty Name="RegionID" ColumnName="RegionID" />
                 <ScalarProperty Name="Region" ColumnName="Region" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -1138,9 +1152,9 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetAllTottMaster" FunctionName="ReportingToolAutomationModel.Store.GetAllTottMaster">
+          <FunctionImportMapping FunctionImportName="GetAllTottMaster" FunctionName="ReleaseManagementModel.Store.GetAllTottMaster">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ReportingToolAutomationModel.GetAllTottMaster_Result">
+              <ComplexTypeMapping TypeName="ReleaseManagementModel.GetAllTottMaster_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TottNo" ColumnName="TottNo" />
                 <ScalarProperty Name="TottDescription" ColumnName="TottDescription" />
@@ -1149,9 +1163,9 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetAllUserDetails" FunctionName="ReportingToolAutomationModel.Store.GetAllUserDetails">
+          <FunctionImportMapping FunctionImportName="GetAllUserDetails" FunctionName="ReleaseManagementModel.Store.GetAllUserDetails">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ReportingToolAutomationModel.GetAllUserDetails_Result">
+              <ComplexTypeMapping TypeName="ReleaseManagementModel.GetAllUserDetails_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
                 <ScalarProperty Name="password" ColumnName="password" />
@@ -1168,9 +1182,9 @@ warning 6002: The table/view 'ReportingToolAutomation.dbo.TBLReleaseEntryDetails
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetTottTaskType" FunctionName="ReportingToolAutomationModel.Store.GetTottTaskType">
+          <FunctionImportMapping FunctionImportName="GetTottTaskType" FunctionName="ReleaseManagementModel.Store.GetTottTaskType">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ReportingToolAutomationModel.GetTottTaskType_Result">
+              <ComplexTypeMapping TypeName="ReleaseManagementModel.GetTottTaskType_Result">
                 <ScalarProperty Name="TaskTypeID" ColumnName="TaskTypeID" />
                 <ScalarProperty Name="TaskType" ColumnName="TaskType" />
                 <ScalarProperty Name="isTottTask" ColumnName="isTottTask" />

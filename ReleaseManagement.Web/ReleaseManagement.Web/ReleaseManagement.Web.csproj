@@ -136,70 +136,70 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="ELMAH_Error.cs">
-      <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GetAllRegion_Result.cs">
-      <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GetAllTottMaster_Result.cs">
-      <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GetAllUserDetails_Result.cs">
-      <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GetTottTaskType_Result.cs">
-      <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReleaseManagementModel.Context.cs">
+    <Compile Include="Models\ELMAH_Error.cs">
+      <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetAllRegion_Result.cs">
+      <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetAllTottMaster_Result.cs">
+      <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetAllUserDetails_Result.cs">
+      <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetTottTaskType_Result.cs">
+      <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReleaseManagementModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReleaseManagementModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ReleaseManagementModel.cs">
+    <Compile Include="Models\ReleaseManagementModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ReleaseManagementModel.Designer.cs">
+    <Compile Include="Models\ReleaseManagementModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReleaseManagementModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="TBLEntryDetail.cs">
+    <Compile Include="Models\TBLEntryDetail.cs">
       <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TBLEnvironmentMaster.cs">
+    <Compile Include="Models\TBLEnvironmentMaster.cs">
       <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TBLRegionMaster.cs">
+    <Compile Include="Models\TBLRegionMaster.cs">
       <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TBLReleaseEntry.cs">
+    <Compile Include="Models\TBLReleaseEntry.cs">
       <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TBLReleaseEntryDetail.cs">
+    <Compile Include="Models\TBLReleaseEntryDetail.cs">
       <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TBLReleaseMaster.cs">
+    <Compile Include="Models\TBLReleaseMaster.cs">
       <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TBLRoleMaster.cs">
+    <Compile Include="Models\TBLRoleMaster.cs">
       <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TBLTaskTypeMaster.cs">
+    <Compile Include="Models\TBLTaskTypeMaster.cs">
       <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TBLTOTTMaster.cs">
+    <Compile Include="Models\TBLTOTTMaster.cs">
       <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TBLUsersDetail.cs">
+    <Compile Include="Models\TBLUsersDetail.cs">
       <DependentUpon>ReleaseManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -210,23 +210,23 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="ReleaseManagementModel.Context.tt">
+    <Content Include="Models\ReleaseManagementModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ReleaseManagementModel.edmx</DependentUpon>
       <LastGenOutput>ReleaseManagementModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ReleaseManagementModel.tt">
+    <Content Include="Models\ReleaseManagementModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ReleaseManagementModel.edmx</DependentUpon>
       <LastGenOutput>ReleaseManagementModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="ReleaseManagementModel.edmx">
+    <EntityDeploy Include="Models\ReleaseManagementModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ReleaseManagementModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="ReleaseManagementModel.edmx.diagram">
+    <Content Include="Models\ReleaseManagementModel.edmx.diagram">
       <DependentUpon>ReleaseManagementModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -259,7 +259,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
